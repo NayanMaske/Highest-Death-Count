@@ -1,5 +1,7 @@
 # Highest-Death-Count
 which country has highest death count in covid
+
+
 1.2 Problem Description:
 A pharmaceutical company is launching a new immunity booster syrup that helps to boost your immunity to fight against coronavirus and helps you recover quickly if you have coronavirus. To increase sales, the company wants to know 
 which country has the highest death count?
@@ -7,6 +9,8 @@ As a result, they begin production in that country to maximize profits rather th
 To answer the above question Map-reduce is used to know the country which has the maximum death count.
 
 1.2.1. But why high computation infrastructure to answer this?
+
+
 Corona has spread throughout the world, and everyone is suffering from Covid-19. In such a case, there is a new case count, a new death count, a new count of recovered people, different symptoms, and patients of different variants of the same virus generated every minute, and all this data is generated according to country, state, region, district, city, and area. And producing every second. So, because a massive amount of data is generated every minute all over the world, we need parallel processing and batch processing on a daily, weekly, and monthly basis to process this data. 
 So, using the Hadoop technique, MapReduce jobs are designed to run on a daily, weekly, or monthly basis, depending on the need. As a result, the mapper and reducer will provide a death count based on country. so that we can get updated statistics on a daily or monthly basis. In this case, we can use India as an example, which is the world's second-most populous country; in such a case, a large amount of data is generated every second, so this will be useful.
 
