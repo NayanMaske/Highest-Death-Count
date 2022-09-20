@@ -1,0 +1,34 @@
+package org.myorg; // importing package
+import java.io.IOException;
+import org.apache.hadoop.io.DoubleWritable;    //Importing the libraries that contain classes 
+import org.apache.hadoop.io.LongWritable;      ////and methods which is required to run mapper class
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+// each map class extend 'MapReduce base class and implement Mapper interface
+// MapreduceBase= MaxDeathsMapper, Mapper interface= Mapper
+public class MaxDeathsMapper extends Mapper<LongWritable, Text, Text, DoubleWritable> //input key value 
+{																					//and output key value
+	private final static DoubleWritable DeathsDoubleWritable = new DoubleWritable(0);
+	private Text CountryCode = new Text();
+//The annotation @Override informs the compiler that the element
+	//is intended to override an element declared in a superclass.
+	@Override 
+	public void map(LongWritable key, Text value, Context context)
+			throws IOException, InterruptedException
+	{
+		//create an array called line of a data type String by using comma (,) as a
+		 //separator in the split method to split the values in the fields and store in array
+		String[] line = value.toString().split(",");
+		//creating a String variable countryname and store the value from the first element
+		String Code = line[6];
+		CountryCode.set(Code);
+		double Deaths = Double.parseDouble(line[5].trim());
+		//Set the value of deathsDoubleWritable object 
+		DeathsDoubleWritable.set(Deaths);
+		context.write(CountryCode, DeathsDoubleWritable);
+	}
+}
+
+
+
+

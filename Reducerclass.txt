@@ -1,0 +1,34 @@
+package org.myorg;//importing packages
+//importing required librabries to run the reducer code
+import java.io.IOException;
+
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+public class MaxDeathsReducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable>
+{
+	@Override
+	//The annotation @Override informs the compiler that the element
+		//is intended to override an element declared in a superclass.
+	public void reduce(Text key, Iterable<DoubleWritable> values, Context context)//A list of 
+										//DoubleWritables for
+										//each country name
+			throws IOException, InterruptedException
+	{
+		//declaring a new variable maxValue with data type double and assign it to zero
+		double maxValue=0;
+		//This for loop will go through all the death count read for each country name and
+		 //find the maximum death count for the country
+		for (DoubleWritable value : values) 
+		{
+			maxValue = Math.max(maxValue, value.get());
+		}
+		context.write(key, new DoubleWritable(maxValue));
+		//Write the key, which contains country name, and the max no of deaths for that
+		 //country
+	}	
+}
+
+
+
